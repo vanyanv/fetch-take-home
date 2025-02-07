@@ -9,21 +9,15 @@ export default function LogoutButton() {
     event.preventDefault();
 
     try {
-      const response = await fetch(
-        'https://frontend-take-home-service.fetch.com//auth/logout',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-        }
-      );
+      await fetch('https://frontend-take-home-service.fetch.com/auth/logout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
 
-      console.log(response);
-      if (!response.ok) {
-        router.push('/');
-      }
+      router.push('/');
     } catch (error) {
       console.error('Error:', error);
     }

@@ -19,7 +19,7 @@ export const DogCard: React.FC<DogCardProps> = ({
   return (
     <div className='relative group w-72 rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-all duration-300 ease-in-out'>
       {/* Image Container */}
-      <div className='relative h-80'>
+      <div className='relative h-60'>
         <img
           className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105'
           src={img}
@@ -55,10 +55,10 @@ export const DogCard: React.FC<DogCardProps> = ({
         </div>
       </div>
 
-      {/* Hover Action Hint */}
+      {/* Hover Action */}
       <div className='absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300'>
         <p className='text-white text-center text-sm font-medium'>
-          Click to view details
+          Add to Favorites
         </p>
       </div>
     </div>
