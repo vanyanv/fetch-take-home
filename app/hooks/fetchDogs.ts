@@ -13,8 +13,10 @@ const FetchDogs = ({
   zipCode?: string | null;
 } = {}) => {
   const router = useRouter();
+  const [currentPage, setCurrentPage] = useState(1);
   const [results, setResults] = useState<Dog[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const fetchDogs = async () => {
@@ -24,6 +26,7 @@ const FetchDogs = ({
         const queryParams = new URLSearchParams({
           sort: sortBy,
           size: pageSize.toString(),
+          from: ((currentPage - 1) * pageSize).toString(),
         });
 
         if (breed) queryParams.append('breed', breed);
@@ -48,6 +51,7 @@ const FetchDogs = ({
 
         const searchData = await searchResponse.json();
 
+        setTotal(searchData.total);
         // Second fetch to get dog details
         const dogsResponse = await fetch(
           'https://frontend-take-home-service.fetch.com/dogs',
@@ -73,11 +77,14 @@ const FetchDogs = ({
     };
 
     fetchDogs();
-  }, [sortBy, pageSize, breed, zipCode, router]); // Dependencies array updated with parameters
+  }, [sortBy, pageSize, breed, zipCode, router, currentPage]); // Dependencies array updated with parameters
 
   return {
     dogs: results,
     isLoading,
+    total,
+    currentPage,
+    setCurrentPage,
   };
 };
 
