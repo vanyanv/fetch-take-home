@@ -38,14 +38,14 @@ export default function SideBar({
         {/* Navigation*/}
         <nav>
           <Link
-            href='/'
+            href='dashboard'
             className='flex items-center p-6 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg mb-2'
           >
             <Home size={20} />
             <span className={`ml-3 ${!isSidebarOpen && 'hidden'}`}>Home</span>
           </Link>
           <Link
-            href='/favorites'
+            href='/dashboard/favorites'
             className='flex items-center p-6 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg mb-2'
           >
             <Heart size={20} />
