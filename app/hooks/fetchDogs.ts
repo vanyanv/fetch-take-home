@@ -4,16 +4,15 @@ import { Dog } from '../types';
 const FetchDogs = ({
   sortBy = 'breed:asc',
   pageSize = 8,
-  breed,
   zipCode,
 }: {
   sortBy?: string;
   pageSize?: number;
-  breed?: string | null;
   zipCode?: string | null;
 } = {}) => {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
+  const [breed, setBreed] = useState<string[]>([]);
   const [results, setResults] = useState<Dog[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [total, setTotal] = useState(0);
@@ -29,7 +28,10 @@ const FetchDogs = ({
           from: ((currentPage - 1) * pageSize).toString(),
         });
 
-        if (breed) queryParams.append('breed', breed);
+        if (breed.length > 0)
+          breed.forEach((breed) => {
+            queryParams.append('breeds[]', breed);
+          });
         if (zipCode) queryParams.append('zipCode', zipCode);
 
         // First fetch to get dog IDs
@@ -50,7 +52,6 @@ const FetchDogs = ({
         }
 
         const searchData = await searchResponse.json();
-
         setTotal(searchData.total);
         // Second fetch to get dog details
         const dogsResponse = await fetch(
@@ -70,6 +71,7 @@ const FetchDogs = ({
         }
 
         const dogs = await dogsResponse.json();
+
         setResults(dogs);
       } finally {
         setIsLoading(false);
@@ -85,6 +87,7 @@ const FetchDogs = ({
     total,
     currentPage,
     setCurrentPage,
+    setBreed,
   };
 };
 

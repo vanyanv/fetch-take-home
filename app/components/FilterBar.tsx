@@ -2,14 +2,20 @@ import React from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import FetchBreeds from '../hooks/fetchBreeds';
 
-export default function FilterBar() {
+type FilterBarProps = {
+  setBreed: (breed: string[]) => void;
+};
+export default function FilterBar({ setBreed }: FilterBarProps) {
   const { breeds } = FetchBreeds();
-  console.log('breeds', breeds);
+
   return (
     <div className='bg-white rounded-lg shadow-sm p-4 flex flex-wrap gap-4 items-center'>
       {/* Breed Filter */}
       <div className='flex-1 min-w-[200px]'>
-        <select className='w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 '>
+        <select
+          onChange={(event) => setBreed(event.target.value === 'All Breeds' ? [] : [event.target.value])}
+          className='w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 '
+        >
           <option>All Breeds</option>
           {breeds.map((breed, index) => (
             <option key={index} value={breed.toString()}>

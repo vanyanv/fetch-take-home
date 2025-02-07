@@ -7,9 +7,9 @@ import FilterBar from './FilterBar';
 import Pagination from './Pagination';
 import LoadingSkeleton from './LoadingSkeleton';
 export default function Dashboard() {
-  const { dogs, isLoading, total, currentPage, setCurrentPage } = FetchDogs();
+  const { dogs, isLoading, total, currentPage, setCurrentPage, setBreed } =
+    FetchDogs();
 
-  console.log(dogs);
   return (
     <div className='h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex flex-col'>
       <div className='container mx-auto px-1 py-4 flex flex-col h-full gap-4'>
@@ -21,7 +21,7 @@ export default function Dashboard() {
           <div className='w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full' />
         </div>
 
-        <FilterBar />
+        <FilterBar setBreed={setBreed} />
 
         {/* Cards Grid */}
         <div className='flex-1 overflow-hidden'>
