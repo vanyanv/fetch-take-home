@@ -1,10 +1,11 @@
 import React from 'react';
-import Search from '../components/Search';
+
+import Dashboard from '../components/Dashboard';
 
 export default function page() {
   return (
     <>
-      <Search />
+      <Dashboard />
     </>
   );
 }

@@ -1,10 +1,11 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import React, { FormEvent } from 'react';
+import React, { FormEvent, useState } from 'react';
 
 export default function Login() {
+  const [errors, setErrors] = useState({ message: '' });
   const router = useRouter();
-  
+
   const handleFormSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
@@ -12,8 +13,14 @@ export default function Login() {
     const name = formData.get('name');
     const email = formData.get('email');
 
-    console.log('Name', name);
-    console.log('Email', email);
+    //simple form validation
+    if (!name || !email) {
+      setErrors((prev) => ({
+        ...prev,
+        message: 'Please provide both name and email to continue',
+      }));
+      return;
+    }
 
     try {
       const response = await fetch(
@@ -31,7 +38,6 @@ export default function Login() {
         }
       );
 
-      console.log(response);
       if (response.ok) {
         router.push('/dashboard');
       }
@@ -82,7 +88,9 @@ export default function Login() {
             placeholder='Enter your Email'
           />
         </div>
-
+        {errors.message && (
+          <div className='text-red-500 text-sm'>{errors.message}</div>
+        )}
         <button
           type='submit'
           className='w-full py-3 px-4 border border-transparent rounded-lg
