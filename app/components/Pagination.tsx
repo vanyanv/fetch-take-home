@@ -1,9 +1,14 @@
 import React from 'react';
 
-const currentPage = 1;
-const totalPages = 10;
+type PaginationProps = {
+  currentPage?: number;
+  totalPages?: number;
+};
 
-export default function Pagination() {
+export default function Pagination({
+  currentPage = 1,
+  totalPages = 10,
+}: PaginationProps) {
   return (
     <div className='bg-white rounded-lg shadow-sm p-4 flex justify-center gap-2'>
       {Array.from({ length: totalPages }, (_, i) => (

@@ -1,8 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { Home, Heart, Menu, X } from 'lucide-react';
-import LogoutButton from '../components/LogoutButton';
-import Link from 'next/link';
+import SideBar from '../components/SideBar';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
@@ -10,55 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className='min-h-screen bg-gray-50 flex'>
       {/* Sidebar */}
-      <div
-        className={`
-        ${isSidebarOpen ? 'w-64' : 'w-20'} 
-        bg-white shadow-lg fixed h-full transition-all duration-300 ease-in-out
-      `}
-      >
-        <div className='p-4 flex items-center justify-between'>
-          <h1
-            className={`text-xl font-bold text-indigo-600 ${
-              !isSidebarOpen && 'hidden'
-            }`}
-          >
-            Fetch
-          </h1>
-          <button
-            onClick={() => setSidebarOpen(!isSidebarOpen)}
-            className='p-2 rounded-lg hover:bg-gray-100'
-          >
-            {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
-
-        {/* Navigation Links */}
-        <nav>
-          <Link
-            href='/'
-            className='flex items-center p-3 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg mb-2'
-          >
-            <Home size={20} />
-            <span className={`ml-3 ${!isSidebarOpen && 'hidden'}`}>Home</span>
-          </Link>
-          <Link
-            href='/favorites'
-            className='flex items-center p-3 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg mb-2'
-          >
-            <Heart size={20} />
-            <span className={`ml-3 ${!isSidebarOpen && 'hidden'}`}>
-              My Favorites
-            </span>
-          </Link>
-        </nav>
-
-        {/* Logout Section */}
-        <div className='absolute bottom-8 w-full p-4'>
-          <div className={`${!isSidebarOpen && 'hidden'}`}>
-            <LogoutButton />
-          </div>
-        </div>
-      </div>
+      <SideBar isSidebarOpen={isSidebarOpen} setSideBarOpen={setSidebarOpen} />
 
       {/* Main Content */}
       <div
