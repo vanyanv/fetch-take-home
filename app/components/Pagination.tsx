@@ -1,5 +1,5 @@
 import React from 'react';
-import { getPageNumbers, ELLIPSIS } from '../utils/paginationUtils';
+import { getPageNumbers } from '../utils/paginationUtils';
 type PaginationProps = {
   currentPage: number;
   total: number;
