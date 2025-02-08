@@ -22,3 +22,9 @@ export interface Coordinates {
 }
 
 export type Breed = string;
+
+export interface FavoritesContextType {
+  favorites: Dog[];
+  addFavorite: (item: Dog) => void;
+  removeFavorite: (id: string) => void;
+}

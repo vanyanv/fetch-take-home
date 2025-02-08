@@ -1,16 +1,21 @@
 import React from 'react';
-import { Home, Heart, Menu, X } from 'lucide-react';
+import { Home, Heart, Menu, X, Sparkles } from 'lucide-react'; // Added Sparkles icon
 import LogoutButton from '../components/LogoutButton';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 type SideBarProps = {
   isSidebarOpen: boolean;
   setSideBarOpen: (value: boolean) => void;
 };
+
 export default function SideBar({
   isSidebarOpen,
   setSideBarOpen,
-}: SideBarProps): React.ReactElement {
+}: SideBarProps) {
+  const pathname = usePathname();
+
+  
   return (
     <>
       <div
@@ -36,17 +41,34 @@ export default function SideBar({
         </div>
 
         {/* Navigation*/}
-        <nav>
+        <nav className='flex flex-col gap-1'>
           <Link
-            href='dashboard'
-            className='flex items-center p-6 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg mb-2'
+            href='/dashboard'
+            className={`flex items-center p-6 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg ${
+              pathname === '/dashboard' ? 'bg-indigo-100 text-indigo-600' : 'text-gray-600'
+            }`}
           >
             <Home size={20} />
             <span className={`ml-3 ${!isSidebarOpen && 'hidden'}`}>Home</span>
           </Link>
+
+          <Link
+            href='/dashboard/match'
+            className={`flex items-center p-6 hover:bg-indigo-100 rounded-lg relative group ${
+              pathname === '/dashboard/match' ? 'bg-indigo-100 text-indigo-600' : 'text-gray-600'
+            }`}
+          >
+            <Sparkles size={20} />
+            <span className={`ml-3 font-medium ${!isSidebarOpen && 'hidden'}`}>
+              Find Match
+            </span>
+          </Link>
+
           <Link
             href='/dashboard/favorites'
-            className='flex items-center p-6 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg mb-2'
+            className={`flex items-center p-6 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg ${
+              pathname === '/dashboard/favorites' ? 'bg-indigo-100 text-indigo-600' : 'text-gray-600'
+            }`}
           >
             <Heart size={20} />
             <span className={`ml-3 ${!isSidebarOpen && 'hidden'}`}>
