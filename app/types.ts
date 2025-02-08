@@ -5,6 +5,7 @@ export interface Dog {
   age: number;
   zip_code: string;
   breed: string;
+  isFavorite?: boolean;
 }
 
 export interface Location {

@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { useContext } from 'react';
+import { FavoritesContext } from '../contexts/FavoritesContext';
 type DogCardProps = {
   name: string;
   age: number;
@@ -7,9 +8,19 @@ type DogCardProps = {
   id: string;
   img: string;
   zip_code: string;
+  isFavorite: boolean;
 };
 
-export const DogCard = ({ name, age, breed, img, zip_code }: DogCardProps) => {
+export const DogCard = ({
+  id,
+  name,
+  age,
+  breed,
+  img,
+  zip_code,
+  isFavorite,
+}: DogCardProps) => {
+  const { addFavorite, removeFavorite } = useContext(FavoritesContext);
   return (
     <div className='relative group w-72 rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-all duration-300 ease-in-out'>
       {/* Image Container */}
@@ -48,11 +59,18 @@ export const DogCard = ({ name, age, breed, img, zip_code }: DogCardProps) => {
       </div>
 
       {/* Hover Animation */}
-      <div className='absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300'>
-        <p className='text-white text-center text-sm font-medium'>
-          Add to Favorites
+      <button className='absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300'>
+        <p
+          onClick={() =>
+            isFavorite
+              ? removeFavorite(id)
+              : addFavorite({ id, name, age, breed, img, zip_code })
+          }
+          className='text-white text-center text-sm font-medium'
+        >
+          {isFavorite ? 'Remove From Favorite' : 'Add to Favorite'}
         </p>
-      </div>
+      </button>
     </div>
   );
 };

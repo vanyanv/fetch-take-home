@@ -44,6 +44,7 @@ export default function Dashboard() {
                       id={dog.id}
                       img={dog.img}
                       zip_code={dog.zip_code}
+                      isFavorite={false}
                     />
                   </div>
                 ))
