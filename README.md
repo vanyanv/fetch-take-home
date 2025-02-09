@@ -47,15 +47,3 @@ npm run dev
 ├── public/           # Static assets
 └── types/           # TypeScript type definitions
 ```
-
-## Technologies Used
-
-- Next.js 13+
-- TypeScript
-- Tailwind CSS
-- Fetch API
-- Hosted On Vercel
-
-This project is licensed under the MIT License.
-
-## Project Features vs Requirements
