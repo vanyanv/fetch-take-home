@@ -52,7 +52,7 @@ npm run dev
 
 # Troubleshooting
 ```
-1.If you encounter any issues:
+If you encounter any issues:
 2.Make sure you have Node.js installed (version 14 or higher)
 3.Try deleting the node_modules folder and running npm install again
 3.If the development server doesn't start, make sure port 3000 isn't being used by another application
