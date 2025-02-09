@@ -37,17 +37,16 @@ npm run dev
 4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## Project Structure
-
-```
+```bash
 ├── app/
 │   ├── components/     # Reusable UI components
+│   ├── contexts/       # React Context providers
+│   ├── hooks/         # Custom React hooks
+│   ├── types/         # TypeScript type definitions
 │   ├── dashboard/      # Main application pages
 │   │   ├── favorites/  # Favorited dogs page
 │   │   └── match/      # Dog matching page
-│   ├── api/           # API route handlers
-│   └── page.tsx       # Home page
-├── public/           # Static assets
-└── types/           # TypeScript type definitions
+│   └── page.tsx       # Home page/Login page
 ```
 
 # Troubleshooting
