@@ -50,7 +50,7 @@ npm run dev
 └── types/           # TypeScript type definitions
 ```
 
-##Troubleshooting
+#Troubleshooting
 ```
 1.If you encounter any issues:
 2.Make sure you have Node.js installed (version 14 or higher)
