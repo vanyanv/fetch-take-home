@@ -19,7 +19,6 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
       }
       return prev;
     });
-    console.log(favorites);
   };
 
   //removing from favorites
