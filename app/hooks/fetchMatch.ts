@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Match } from '../types';
 
-export default function FetchBreeds() {
-  const [breeds, setBreeds] = useState<string[]>([]);
+export default function FetchMatch() {
+  const [match, setMatch] = useState<Match[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -14,14 +15,14 @@ export default function FetchBreeds() {
             credentials: 'include',
           }
         );
-        if (!response.ok) throw new Error('Failed to fetch breeds');
+        if (!response.ok) throw new Error('Failed to fetch Match');
         const data = await response.json();
-        setBreeds(data);
+        setMatch(data);
       } catch (err) {
         setError(
           err instanceof Error
             ? err
-            : new Error('An error occurred in fetching breeds')
+            : new Error('An error occurred in getting Match')
         );
       } finally {
         setIsLoading(false);
@@ -31,5 +32,5 @@ export default function FetchBreeds() {
     fetchData();
   }, []);
 
-  return { breeds, isLoading, error };
+  return { match, isLoading, error };
 }

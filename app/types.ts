@@ -22,6 +22,10 @@ export interface Coordinates {
   lon: number;
 }
 
+export interface Match {
+  match: string;
+}
+
 export type Breed = string;
 
 export interface FavoritesContextType {

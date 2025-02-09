@@ -58,7 +58,7 @@ export const DogCard = ({
         </div>
       </div>
 
-      {/* Hover Animation */}
+      {/* Add or Remove Favorite */}
       <button className='absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300'>
         <p
           onClick={() =>
