@@ -13,13 +13,13 @@ This application allows users to:
 
 ## Getting Started
 
-1. Clone the repository:
+# Getting Started
 
+1. Clone this repository:
 ```bash
-git clone [repository-url]
-cd [repository-name]
+git clone https://github.com/vanyanv/fetch-take-home.git
+cd fetch-take-home
 ```
-
 2. Install dependencies:
 
 ```bash
