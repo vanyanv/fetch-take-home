@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { FavoritesContext } from '../contexts/FavoritesContext';
 type DogCardProps = {
   name: string;
@@ -21,8 +21,26 @@ export const DogCard = ({
   isFavorite,
 }: DogCardProps) => {
   const { addFavorite, removeFavorite } = useContext(FavoritesContext);
+  const [notification, setNotification] = useState('');
+
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      removeFavorite(id);
+      setNotification('Removed from favorites');
+    } else {
+      addFavorite({ id, name, age, breed, img, zip_code });
+      setNotification('Added to favorites');
+    }
+    setTimeout(() => setNotification(''), 2000); // Clear notification after 2 seconds
+  };
+
   return (
     <div className='relative group w-72 rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-all duration-300 ease-in-out'>
+      {notification && (
+        <div className='absolute top-4 left-1/2 transform -translate-x-1/2 z-10 bg-black/80 text-white px-2 py-2 rounded-full text-sm'>
+          {notification}
+        </div>
+      )}
       {/* Image Container */}
       <div className='relative h-60'>
         <img
@@ -61,11 +79,7 @@ export const DogCard = ({
       {/* Add or Remove Favorite */}
       <button className='absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300'>
         <p
-          onClick={() =>
-            isFavorite
-              ? removeFavorite(id)
-              : addFavorite({ id, name, age, breed, img, zip_code })
-          }
+          onClick={handleFavoriteClick}
           className='text-white text-center text-sm font-medium'
         >
           {isFavorite ? 'Remove From Favorite' : 'Add to Favorite'}
