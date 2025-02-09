@@ -1,14 +1,20 @@
 'use client';
 import React from 'react';
-
 import { DogCard } from './DogCard';
 import FetchDogs from '../hooks/fetchDogs';
 import FilterBar from './FilterBar';
 import Pagination from './Pagination';
 import LoadingSkeleton from './LoadingSkeleton';
 export default function Dashboard() {
-  const { dogs, isLoading, total, currentPage, setCurrentPage, setBreed } =
-    FetchDogs();
+  const {
+    dogs,
+    isLoading,
+    total,
+    currentPage,
+    setCurrentPage,
+    setBreed,
+    setSortBy,
+  } = FetchDogs();
 
   return (
     <div className='h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex flex-col'>
@@ -21,7 +27,7 @@ export default function Dashboard() {
           <div className='w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full' />
         </div>
 
-        <FilterBar setBreed={setBreed} />
+        <FilterBar setBreed={setBreed} setSortBy={setSortBy} />
 
         {/* Cards Grid */}
         <div className='flex-1 overflow-hidden'>
