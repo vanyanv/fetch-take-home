@@ -18,6 +18,8 @@ This application allows users to:
 1. Clone this repository:
 ```bash
 git clone https://github.com/vanyanv/fetch-take-home.git
+```
+```
 cd fetch-take-home
 ```
 2. Install dependencies:
@@ -46,4 +48,12 @@ npm run dev
 │   └── page.tsx       # Home page
 ├── public/           # Static assets
 └── types/           # TypeScript type definitions
+```
+
+##Troubleshooting
+```
+1.If you encounter any issues:
+2.Make sure you have Node.js installed (version 14 or higher)
+3.Try deleting the node_modules folder and running npm install again
+3.If the development server doesn't start, make sure port 3000 isn't being used by another application
 ```
