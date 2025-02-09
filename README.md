@@ -13,13 +13,15 @@ This application allows users to:
 
 ## Getting Started
 
-1. Clone the repository:
+# Getting Started
 
+1. Clone this repository:
 ```bash
-git clone [repository-url]
-cd [repository-name]
+git clone https://github.com/vanyanv/fetch-take-home.git
 ```
-
+```
+cd fetch-take-home
+```
 2. Install dependencies:
 
 ```bash
@@ -35,15 +37,22 @@ npm run dev
 4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## Project Structure
-
-```
+```bash
 ├── app/
 │   ├── components/     # Reusable UI components
+│   ├── contexts/       # React Context providers
+│   ├── hooks/         # Custom React hooks
+│   ├── types         # TypeScript type definitions
 │   ├── dashboard/      # Main application pages
 │   │   ├── favorites/  # Favorited dogs page
 │   │   └── match/      # Dog matching page
-│   ├── api/           # API route handlers
-│   └── page.tsx       # Home page
-├── public/           # Static assets
-└── types/           # TypeScript type definitions
+│   └── page.tsx       # Home page/Login page
+```
+
+# Troubleshooting
+```
+If you encounter any issues:
+2.Make sure you have Node.js installed (version 14 or higher)
+3.Try deleting the node_modules folder and running npm install again
+3.If the development server doesn't start, make sure port 3000 isn't being used by another application
 ```
