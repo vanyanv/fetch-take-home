@@ -42,7 +42,7 @@ npm run dev
 │   ├── components/     # Reusable UI components
 │   ├── contexts/       # React Context providers
 │   ├── hooks/         # Custom React hooks
-│   ├── types/         # TypeScript type definitions
+│   ├── types         # TypeScript type definitions
 │   ├── dashboard/      # Main application pages
 │   │   ├── favorites/  # Favorited dogs page
 │   │   └── match/      # Dog matching page
