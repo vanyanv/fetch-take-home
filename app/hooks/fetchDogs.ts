@@ -43,9 +43,9 @@ const FetchDogs = ({
         );
 
         //Simple Auth for dashboard page, if user has logged out or HTTP Token has expired they will be re-directed to login
-        if (searchResponse.status === 401) {
-          router.push('/');
-        }
+        // if (searchResponse.status === 401) {
+        //   router.push('/');
+        // }
 
         if (!searchResponse.ok) {
           throw new Error('Failed to fetch dog IDs');
