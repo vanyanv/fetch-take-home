@@ -15,7 +15,6 @@ export default function SideBar({
 }: SideBarProps) {
   const pathname = usePathname();
 
-  
   return (
     <>
       <div
@@ -45,7 +44,9 @@ export default function SideBar({
           <Link
             href='/dashboard'
             className={`flex items-center p-6 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg ${
-              pathname === '/dashboard' ? 'bg-indigo-100 text-indigo-600' : 'text-gray-600'
+              pathname === '/dashboard'
+                ? 'bg-indigo-100 text-indigo-600'
+                : 'text-gray-600'
             }`}
           >
             <Home size={20} />
@@ -55,7 +56,9 @@ export default function SideBar({
           <Link
             href='/dashboard/match'
             className={`flex items-center p-6 hover:bg-indigo-100 rounded-lg relative group ${
-              pathname === '/dashboard/match' ? 'bg-indigo-100 text-indigo-600' : 'text-gray-600'
+              pathname === '/dashboard/match'
+                ? 'bg-indigo-100 text-indigo-600'
+                : 'text-gray-600'
             }`}
           >
             <Sparkles size={20} />
@@ -67,7 +70,9 @@ export default function SideBar({
           <Link
             href='/dashboard/favorites'
             className={`flex items-center p-6 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg ${
-              pathname === '/dashboard/favorites' ? 'bg-indigo-100 text-indigo-600' : 'text-gray-600'
+              pathname === '/dashboard/favorites'
+                ? 'bg-indigo-100 text-indigo-600'
+                : 'text-gray-600'
             }`}
           >
             <Heart size={20} />
